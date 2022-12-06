@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Faker;
 use Faker\Provider\Fakecar;
+use App\Lib\AutoFaker;
+
 
 class GescandeAutoSeeder extends Seeder
 {
@@ -34,7 +36,10 @@ class GescandeAutoSeeder extends Seeder
     public function valsCars($faker, $autos) {
         $valsCars = [];
         foreach ($autos as $auto) {
-            $car = $faker->vehicleArray;
+            //$car = $faker->vehicleArray;
+            $autoFaker = new AutoFaker;
+            $car = $autoFaker->getCar();
+            //$car = $fakeCars->getCar();
             $valsCar = [
                         //'id' => $auto->id,
                         'kenteken' => $auto->kenteken,
