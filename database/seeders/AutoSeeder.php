@@ -17,7 +17,7 @@ class AutoSeeder extends Seeder
     public function run()
     {
         Auto::factory()
-        ->count(250)
+        ->count(2500)
         ->create();
     }
 }

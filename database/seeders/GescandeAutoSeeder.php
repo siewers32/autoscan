@@ -20,7 +20,7 @@ class GescandeAutoSeeder extends Seeder
     {
         $faker = (new Faker\Factory())::create('nl_NL');
         $faker->addProvider(new Fakecar($faker));
-        $cars = $this->getRandomCars(20);
+        $cars = $this->getRandomCars(150);
         $trueCars = $this->copyScannedCars($cars); 
         $fakeCars = $this->valsCars($faker, $this->getFakeCars($cars, 6));
         //$autos = $this->valsCars($faker, $this->getRandomCars(6));
@@ -38,7 +38,7 @@ class GescandeAutoSeeder extends Seeder
             $valsCar = [
                         //'id' => $auto->id,
                         'kenteken' => $auto->kenteken,
-                        //'voertuigsoort' => $faker->vehicleType,
+                        'voertuigsoort' => "personenauto",
                         'merk' => $car['brand'],
                         'model' => $car['model'],
                         'created_at' => \Carbon\Carbon::now(),
@@ -58,7 +58,7 @@ class GescandeAutoSeeder extends Seeder
             $trueCar = [
                    // 'id' => $auto->id,
                     'kenteken' => $auto->kenteken,
-                    //'voertuigsoort' => $auto->voertuigsoort,
+                    'voertuigsoort' => $auto->voertuigsoort,
                     'merk' => $auto->merk,
                     'model' => $auto->model,
                     'created_at' => \Carbon\Carbon::now(),
@@ -82,4 +82,5 @@ class GescandeAutoSeeder extends Seeder
         $fakeCars = array_slice($cars,0,$amount);
         return $fakeCars;
     }
+
 }
