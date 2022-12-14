@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('kenteken');
             $table->string('voertuigsoort');
             $table->string('merk');            
-            $table->string('model');            
+            $table->string('model');
+            $table->dateTime('gescand_op');          
             $table->timestamps();
         });
     }

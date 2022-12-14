@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('auto', function (Blueprint $table) {
+        Schema::create('rdw', function (Blueprint $table) {
             $table->id();
             $table->string('kenteken');
             $table->string('voertuigsoort');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('auto');
+        Schema::dropIfExists('rdw');
     }
 };

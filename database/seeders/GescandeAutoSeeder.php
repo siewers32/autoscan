@@ -60,12 +60,14 @@ class GescandeAutoSeeder extends Seeder
         //$autoArr = $autos->toArray();
         //shuffle($autoArr);
         foreach ($autos as $auto) {
+            $scantime = \Carbon\Carbon::now();
             $trueCar = [
                    // 'id' => $auto->id,
                     'kenteken' => $auto->kenteken,
                     'voertuigsoort' => $auto->voertuigsoort,
                     'merk' => $auto->merk,
                     'model' => $auto->model,
+                    'gescand_op' => $scantime->subMinutes(random_int(3600, (3600 * 5))),
                     'created_at' => \Carbon\Carbon::now(),
                     'updated_at' => \Carbon\Carbon::now()
                 ]; 
@@ -76,7 +78,7 @@ class GescandeAutoSeeder extends Seeder
 
     public function getRandomCars($amount) {
         //Get random $amount cars
-        $cars = DB::table('auto')->get()->toArray();
+        $cars = DB::table('rdw')->get()->toArray();
         shuffle($cars);
         $randomCars = array_slice($cars,0,$amount);
         return $randomCars;
